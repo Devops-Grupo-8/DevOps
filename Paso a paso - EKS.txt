@@ -1,0 +1,12 @@
+como desplegar un contenedor de docker en aws?
+Amazon Elastic Kubernetes Service (EKS):
+
+Crea un clúster de EKS utilizando la consola de administración de AWS o AWS CLI.
+Configura los nodos del clúster de EKS utilizando Amazon EC2 o utiliza nodos gestionados por AWS Fargate.
+Crea un archivo de manifiesto Kubernetes (por ejemplo, un archivo YAML) que defina los recursos necesarios, incluyendo el Deployment o Pod que contenga la especificación de tu contenedor.
+Utiliza el comando kubectl para aplicar el archivo de manifiesto y desplegar tu contenedor en el clúster de EKS.
+Puedes encontrar más información y pasos detallados en la documentación oficial de Amazon EKS.
+
+Estos son solo dos enfoques populares para desplegar contenedores de Docker en AWS. Ten en cuenta que hay otras opciones disponibles, como AWS Fargate, AWS App Runner y más, que pueden simplificar aún más el proceso de despliegue.
+
+Recuerda ajustar los pasos y configuraciones según tus necesidades específicas y asegúrate de tener en cuenta aspectos como la seguridad, la escalabilidad y el rendimiento al configurar y desplegar tus contenedores en AWS.
