@@ -38,3 +38,11 @@ module "eks" {
     Terraform   = "true"
   }
 }
+
+resource "aws_s3_bucket" "Front_bucket" {
+  bucket = var.bucket_name
+  tags = {
+    Name        = var.bucket_tag_name
+    Environment = var.enviroment_name
+  }
+}
