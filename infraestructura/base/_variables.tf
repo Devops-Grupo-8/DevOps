@@ -16,6 +16,16 @@ variable "enviroment_name" {
   type = string
 }
 
+variable "bucket_name" {
+  description = "Nombre del Bucket"
+  type = string
+}
+
+variable "bucket_tag_name" {
+  description = "Tag del bucket"
+  type = string
+}
+
 variable "vpc_id" {
   description = "VPC Identification"
   type = string
