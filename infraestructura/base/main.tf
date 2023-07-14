@@ -5,15 +5,15 @@ module "eks" {
   cluster_name    = var.cluster_name
   cluster_version = "1.26"
 
-  cluster_endpoint_public_access  = true
+  cluster_endpoint_public_access = true
 
   vpc_id                   = var.vpc_id
   subnet_ids               = var.subnets
   control_plane_subnet_ids = var.subnets
 
   create_iam_role = false
-  iam_role_arn = var.role_arn
-  
+  iam_role_arn    = var.role_arn
+
   eks_managed_node_group_defaults = {
     instance_types = ["t3.micro"]
   }
@@ -24,12 +24,12 @@ module "eks" {
       max_size     = 2
       desired_size = 1
 
-      instance_types = ["t3.small"]
-      capacity_type  = "ON_DEMAND"
-      iam_role_arn =  var.role_arn
+      instance_types           = ["t3.small"]
+      capacity_type            = "ON_DEMAND"
+      iam_role_arn             = var.role_arn
       iam_instance_profile_arn = var.role_arn
-      create_iam_role = false
-      create_role = false
+      create_iam_role          = false
+      create_role              = false
     }
   }
 
@@ -39,10 +39,8 @@ module "eks" {
   }
 }
 
-resource "aws_s3_bucket" "Front_bucket" {
+module "s3_bucket" {
+  source  = "terraform-aws-modules/s3-bucket/aws"
+  version = "2.9.0"
   bucket = var.bucket_name
-  tags = {
-    Name        = var.bucket_tag_name
-    Environment = var.enviroment_name
-  }
 }
