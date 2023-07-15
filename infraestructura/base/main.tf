@@ -42,5 +42,39 @@ module "eks" {
 module "s3_bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "2.9.0"
-  bucket = var.bucket_name
+  bucket  = var.bucket_name
+  acl = "private"
+}
+
+resource "aws_s3_bucket_policy" "allow_acces" {
+  bucket = module.s3_bucket.s3_bucket_id
+  policy = <<EOF
+  {
+    "Version": "2008-10-17",
+    "Id": "GetObjectFromS3",
+    "Statement": [
+      {
+        "Sid": "1",
+        "Effect": "Allow",
+        "Principal": "*",
+        "Action": "s3:GetObject",
+        "Resource": "arn:aws:s3:::${var.bucket_name}/*"
+      }
+    ]
+  }
+  EOF
+}
+
+resource "aws_s3_bucket_website_configuration" "website" {
+  bucket = module.s3_bucket.s3_bucket_id
+  index_document {
+    suffix = "index.html"
+  }
+}
+
+resource "aws_s3_bucket_public_access_block" "public_acces" {
+  bucket = module.s3_bucket.s3_bucket_id
+
+  block_public_acls       = false
+  block_public_policy     = false
 }
