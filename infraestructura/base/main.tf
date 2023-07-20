@@ -1,4 +1,3 @@
-/*
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 18.21"
@@ -38,7 +37,7 @@ module "eks" {
     Environment = var.enviroment_name
     Terraform   = "true"
   }
-}*/
+}
 
 module "s3_bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
@@ -80,8 +79,44 @@ resource "aws_s3_bucket_public_access_block" "public_acces" {
   block_public_policy     = false
 }
 
-resource "aws_ecr_repository" "foo" {
-  name                 = var.bucket_name
+resource "aws_ecr_repository" "orders-service-example" {
+  name                 = "orders-service-example"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}
+
+resource "aws_ecr_repository" "shipping-service-example" {
+  name                 = "shipping-service-example"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}
+
+resource "aws_ecr_repository" "payments-service-example" {
+  name                 = "payments-service-example"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}
+
+resource "aws_ecr_repository" "products-service-example" {
+  name                 = "products-service-example"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}
+
+resource "aws_ecr_repository" "webapp" {
+  name                 = "webapp"
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {

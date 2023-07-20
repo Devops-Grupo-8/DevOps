@@ -47,5 +47,5 @@ variable "subnets" {
 variable "role_arn" {
   description = "Role ARN"
   type = string
-  default = "arn:aws:iam::346054926618:role/LabRole" 
+  default = "arn:aws:iam::346054926618:role/LabRole"
 }
