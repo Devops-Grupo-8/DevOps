@@ -6,26 +6,6 @@ variable "aws_region" {
   default = "us-east-1"
 }
 
-variable "cluster_name" {
-  description = "Nombre del Cluster"
-  type = string
-}
-
-variable "enviroment_name" {
-  description = "Nombre de Ambiente"
-  type = string
-}
-
-variable "bucket_name" {
-  description = "Nombre del Bucket"
-  type = string
-}
-
-variable "bucket_tag_name" {
-  description = "Tag del bucket"
-  type = string
-}
-
 variable "vpc_id" {
   description = "VPC Identification"
   type = string
