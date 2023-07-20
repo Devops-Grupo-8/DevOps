@@ -38,3 +38,13 @@ Para la solución propuesta se implementaron dos tipos de repositorios. por un l
 ### Etapas de CI 
 #### Análisis de código estático 
 Para el analisis estatico del codigo y revision continua se integro la herramienta de SonarCloud, la cual se ejecuta cada vez que se integra codigo a una de las ramas estables (main, dev, test).
+
+
+
+
+### Testing de web app
+En relación al proceso de testeo, optamos por llevar a cabo una evaluación de la aplicación web utilizando la herramienta Postman. En este caso, nuestro test consistió en generar un total de 100 solicitudes (requests) a la URL de nuestra aplicación. Esta acción nos permitió someter la web app a una carga significativa y analizar su rendimiento y estabilidad bajo condiciones de alto tráfico. 
+
+A continuación dejamos la evidencia relacionada a dicho test:
+
+<img style="display:block;text-align:center" src="Extras/Postman Test.png" width=100% title="static">
