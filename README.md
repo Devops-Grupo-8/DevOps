@@ -41,10 +41,13 @@ Para la solución propuesta se implementaron dos tipos de repositorios. por un l
 <p align="center">
 <img style="display:block;text-align:center" src="Extras/Imagen Gitflow.png" width=60% title="static">
 </p>
+
 - **Repositorio DevOps:** En este repositorio se encuentran los archivos del código que genera la infraestructura, así como los relacionados con el ciclo de Continuous Deployment (CD). Optamos por utilizar la estrategia de desarrollo Trunk Based, donde mantenemos una única rama principal llamada 'main' para el desarrollo de software.
+  
 <p align="center">
 <img style="display:block;text-align:center" src="Extras/Imagen TrunkBased.png" width=60% title="static">
 </p>
+
 ### Reglas de protección de las ramas 
 
 Es fundamental resaltar que, desde el inicio del proyecto, establecimos una política sólida en cuanto a la protección de cada una de las ramas de las aplicaciones. Esta medida fue esencial para mantener un seguimiento de todos los cambios realizados en las cuatro aplicaciones por parte de los integrantes del equipo.
@@ -62,6 +65,7 @@ Dicha política consistió en tres aspectos fundamentales:
 Para llevar a cabo el análisis estático del código y la revisión continua, hemos integrado la herramienta SonarCloud en nuestros repositorios en GitHub. Este análisis se ejecuta automáticamente cada vez que se integra código en una de las ramas estables (main, dev, test) de cada una de las aplicaciones
 
 Una vez que se realiza una modificación en el código y se inicia una pipeline, es posible observar el proceso en el que SonarCloud lleva a cabo la verificación del código. A continuación, dejamos una imagen que muestra este proceso en acción:
+
 <p align="center">
 <img style="display:block;text-align:center" src="Extras/Testeo Sonnar en Github.jpeg" width=75% title="static">
 </p>
@@ -151,6 +155,7 @@ setTimeout(() => {
 ```
 
 A continuación dejamos la evidencia relacionada a dicho test:
+
 <p align="center">
 <img style="display:block;text-align:center" src="Extras/Postman Test.jpeg" width=75% title="static">
 </p>
