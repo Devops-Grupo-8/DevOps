@@ -34,12 +34,24 @@ Para la solución propuesta se implementaron dos tipos de repositorios. por un l
 
 <img style="display:block;text-align:center" src="Extras/Imagen TrunkBased.png" width=100% title="static">
 
+#### Branch protection rule 
+
+Es fundamental resaltar que, desde el inicio del proyecto, establecimos una política sólida en cuanto a la protección de cada una de las ramas de las aplicaciones. Esta medida fue esencial para mantener un seguimiento de todos los cambios realizados en las cuatro aplicaciones por parte de los integrantes del equipo.
+
+Dicha política consistió en dos aspectos fundamentales:
+
+1-Exigir un "pull request" antes de mergear cualquier cambio de código. Esto permitió que todos los cambios fueran revisados y aprobados por otro miembro del equipo antes de ser incorporados a la rama principal.
+
+2-Requerir que las ramas estuvieran actualizadas antes de realizar una fusión. De esta manera, aseguramos que el código estuviera en línea con la última versión de la rama principal y evitamos conflictos potenciales.
+
+
 ### Etapas de CI 
 #### Análisis de código estático 
-Para el analisis estatico del codigo y revision continua se integro la herramienta de SonarCloud a nuestros repositorios en github. Dicho analisis se ejecuta cada vez que se integra codigo a una de las ramas estables (main, dev, test) de cada una de las aplicaciones.
+Para llevar a cabo el análisis estático del código y la revisión continua, hemos integrado la herramienta SonarCloud en nuestros repositorios en GitHub. Este análisis se ejecuta automáticamente cada vez que se integra código en una de las ramas estables (main, dev, test) de cada una de las aplicaciones
 
+Una vez que se realiza una modificación en el código y se inicia una pipeline, es posible observar el proceso en el que SonarCloud lleva a cabo la verificación del código. A continuación, dejamos una imagen que muestra este proceso en acción:
 
-
+<img style="display:block;text-align:center" src="Extras/Testeo Sonnar en Github.jpeg" width=100% title="static">
 
 
 ### Testing web app
