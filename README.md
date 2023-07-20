@@ -21,6 +21,13 @@ El objetivo de este proyecto es implementar un flujo de desarrollo y despliegue 
 Nuestra solución propone adoptar la metodología DevOps para mejorar el desarrollo y entrega de software. Mediante una colaboración estrecha entre equipos y la automatización de procesos, buscamos acelerar el time-to-market y garantizar la calidad del software. 
 A continuación se explicaran los cambios implementados en cada una de las áreas.
 
+### Tareas a realizar
+En el inicio del proyecto, realizamos un tablero Kanban a modo de establer una hoja de ruta clara en cuanto a las tareas necesarias a realizar para el proyecto y los tiempos que cada una de ellas podria requerir.
+
+Las tareas fueron las siguientes:
+
+<img style="display:block;text-align:center" src="Extras/Tablero Kanban.jpeg" width=100% title="static">
+
 ### Infraestructura 
 En el ámbito de la infraestructura, hemos logrado una modernización significativa al adoptar un enfoque descentralizado basado en microservicios. Esta arquitectura permite una escalabilidad más eficiente tanto vertical como horizontalmente. Además, hemos migrado a una infraestructura en la nube, aprovechando Terraform para implementar una gestión de infraestructura como código (IaC) y haciendo uso de los servicios de AWS.
 
@@ -44,7 +51,7 @@ Dicha política consistió en tres aspectos fundamentales:
 
 2-Requerir que las ramas estuvieran actualizadas antes de realizar una fusión. De esta manera, aseguramos que el código estuviera en línea con la última versión de la rama principal y evitamos conflictos potenciales.
 
-3-Aprovechando la integración de SonarCloud en cada uno de los repositorios, se ha implementado un requisito adicional al proceso de merge. Antes de que cualquier miembro del equipo pueda fusionar sus modificaciones, deberá esperar a que el análisis del código por parte de SonarCloud sea exitoso y arroje un resultado positivo.
+3-Aprovechando la integración con SonarCloud en cada uno de los repositorios, se ha implementado un requisito adicional al proceso de merge. Antes de que cualquier miembro del equipo pueda fusionar sus modificaciones, deberá esperar a que el análisis del código por parte de SonarCloud sea exitoso y arroje un resultado positivo.
 
 ### Etapas de CI 
 #### Análisis de código estático 
@@ -57,6 +64,8 @@ Una vez que se realiza una modificación en el código y se inicia una pipeline,
 
 ### Testing web app
 En relación al proceso de testeo, optamos por llevar a cabo una evaluación de la aplicación web utilizando la herramienta Postman. En este caso, nuestro test consistió en generar un total de 100 solicitudes (requests) a la URL de nuestra aplicación. Esta acción nos permitió someter la web app a una carga significativa y analizar su rendimiento y estabilidad bajo condiciones de alto tráfico. 
+
+Link aplicación web : [http://devops-grupo-8-bucket-dev.s3-website-us-east-1.amazonaws.com/]
 
 El codigo implementado para el testeo dentro de la aplicación fue el siguiente:
 ```
