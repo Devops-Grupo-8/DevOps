@@ -21,10 +21,10 @@ El objetivo de este proyecto es implementar un flujo de desarrollo y despliegue 
 
 ## Solución Propuesta
 Nuestra solución propone adoptar la metodología DevOps para mejorar el desarrollo y entrega de software. Mediante una colaboración estrecha entre equipos y la automatización de procesos, buscamos acelerar el time-to-market y garantizar la calidad del software. 
-A continuación se explicaran los cambios implementados en cada una de las áreas.
+A continuación se explicarán los cambios implementados en cada una de las áreas.
 
 ### Tareas a realizar
-En el inicio del proyecto, realizamos un tablero Kanban a modo de establer una hoja de ruta clara en cuanto a las tareas necesarias a realizar para el proyecto y los tiempos que cada una de ellas podria requerir.
+En el inicio del proyecto, realizamos un tablero Kanban a modo de establer una hoja de ruta clara en cuanto a las tareas necesarias a realizar para el proyecto y los tiempos que cada una de ellas podría requerir.
 
 Las tareas fueron las siguientes:
 <p align="center">
