@@ -67,9 +67,10 @@ En general, la mayoría de los repositorios han arrojado resultados positivos, c
 
 Enfocandonos en cada uno de los repositorios 
 
-
-
 En los repositorios de los MS orders y payments se detectaron 1 bug en cada uno, categorizados como C y D respectivamente. Si bien no son categoria A, son bugs a los que hay que hacerle foco y corregir de inmediato, ya que pueden hacer romper el funcionamiento del MS. 
+
+<img style="display:block;text-align:center" src="Extras/Testeo Sonnar en Github.jpeg" width=100% title="static">
+
 
 ### Testing web app
 En relación al proceso de testeo, optamos por llevar a cabo una evaluación de la aplicación web utilizando la herramienta Postman. En este caso, nuestro test consistió en generar un total de 100 solicitudes (requests) a la URL de nuestra aplicación. Esta acción nos permitió someter la web app a una carga significativa y analizar su rendimiento y estabilidad bajo condiciones de alto tráfico. 
