@@ -42,9 +42,56 @@ Para el analisis estatico del codigo y revision continua se integro la herramien
 
 
 
-### Testing de web app
+### Testing web app
 En relación al proceso de testeo, optamos por llevar a cabo una evaluación de la aplicación web utilizando la herramienta Postman. En este caso, nuestro test consistió en generar un total de 100 solicitudes (requests) a la URL de nuestra aplicación. Esta acción nos permitió someter la web app a una carga significativa y analizar su rendimiento y estabilidad bajo condiciones de alto tráfico. 
+
+El codigo implementado para el testeo dentro de la aplicación fue el siguiente:
+```
+pm.test("La respuesta demora menos de 300ms", ()=>{
+    pm.expect(pm.response.responseTime).to.be.below(300)
+})
+
+pm.test("La respuesta debe ser correcta", ()=>{
+    pm.response.to.be.ok; //codigo 200
+    pm.response.to.be.withBody; //tener body
+})
+
+pm.test("La respuesta debe tener el tipo de contenido correcto", () => {
+    pm.response.to.have.header("Content-Type");
+});
+
+let requestsCounter = 0;
+const maxRequests = 100; // Número máximo de solicitudes a realizar
+const interval = 100; // Intervalo entre cada solicitud (en milisegundos)
+const testDuration = 10000; // Duración total de la prueba (en milisegundos)
+
+function makeRequest() {
+    pm.sendRequest(pm.request.url, (err, response) => {
+        requestsCounter++;
+
+        if (err) {
+            console.log(`Error en la solicitud ${requestsCounter}: ${err}`);
+        } else {
+            console.log(`Solicitud ${requestsCounter}: Tiempo de respuesta ${response.responseTime} ms`);
+            pm.expect(response.responseTime).to.be.below(300); // Verifica el tiempo de respuesta
+        }
+
+        if (requestsCounter === maxRequests) {
+            clearInterval(intervalId);
+        }
+    });
+}
+
+const intervalId = setInterval(makeRequest, interval);
+
+setTimeout(() => {
+    console.log(`Se realizaron ${requestsCounter} solicitudes en ${testDuration} ms.`);
+    pm.test("Prueba de carga finalizada", () => {
+        pm.expect(requestsCounter).to.equal(maxRequests); // Verifica que se hayan realizado todas las solicitudes
+    });
+}, testDuration);
+```
 
 A continuación dejamos la evidencia relacionada a dicho test:
 
-<img style="display:block;text-align:center" src="Extras/Postman Test.png" width=100% title="static">
+<img style="display:block;text-align:center" src="Extras/Postman Test.jpeg" width=100% title="static">
