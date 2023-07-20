@@ -90,6 +90,9 @@ Por último, y no menos importante, el 15.6% del código en "orders-service-exam
 ###### shipping-service-example
 (7) Code Smells, de los cuales 2 son problemas de rendimiento, 2 por código confuso, 2 por no pasarle tipo a la invocación de un Generic y, por último, un test case sin al menos un "assertion".
 
+###### webapp
+(1) Code Smells código confuso. Este se podría simplificar usando un opcional (en este caso: webpackConfigEnv?.isLocal).
+
 Dejamos una imagen mostrando nuestro panel en SonarCloud:
 <p align="center">
 <img style="display:block;text-align:center" src="Extras/sonnar cloud imagen dashboard.png" width=60% title="static">
