@@ -34,16 +34,17 @@ Para la solución propuesta se implementaron dos tipos de repositorios. por un l
 
 <img style="display:block;text-align:center" src="Extras/Imagen TrunkBased.png" width=100% title="static">
 
-#### Branch protection rule 
+### Reglas de protección de las ramas 
 
 Es fundamental resaltar que, desde el inicio del proyecto, establecimos una política sólida en cuanto a la protección de cada una de las ramas de las aplicaciones. Esta medida fue esencial para mantener un seguimiento de todos los cambios realizados en las cuatro aplicaciones por parte de los integrantes del equipo.
 
-Dicha política consistió en dos aspectos fundamentales:
+Dicha política consistió en tres aspectos fundamentales:
 
 1-Exigir un "pull request" antes de mergear cualquier cambio de código. Esto permitió que todos los cambios fueran revisados y aprobados por otro miembro del equipo antes de ser incorporados a la rama principal.
 
 2-Requerir que las ramas estuvieran actualizadas antes de realizar una fusión. De esta manera, aseguramos que el código estuviera en línea con la última versión de la rama principal y evitamos conflictos potenciales.
 
+3-Aprovechando la integración de SonarCloud en cada uno de los repositorios, se ha implementado un requisito adicional al proceso de merge. Antes de que cualquier miembro del equipo pueda fusionar sus modificaciones, deberá esperar a que el análisis del código por parte de SonarCloud sea exitoso y arroje un resultado positivo.
 
 ### Etapas de CI 
 #### Análisis de código estático 
