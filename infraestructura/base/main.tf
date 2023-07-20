@@ -1,3 +1,4 @@
+/*
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 18.21"
@@ -37,7 +38,7 @@ module "eks" {
     Environment = var.enviroment_name
     Terraform   = "true"
   }
-}
+}*/
 
 module "s3_bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
@@ -80,7 +81,7 @@ resource "aws_s3_bucket_public_access_block" "public_acces" {
 }
 
 resource "aws_ecr_repository" "foo" {
-  name                 = "bar"
+  name                 = var.bucket_name
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
