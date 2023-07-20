@@ -1,12 +1,11 @@
 <img style="display:block;text-align:center" src="Extras/ORT.png" width=100% title="static">
 
-## Universidad ORT Uruguay 
-
 #### Facultad de Ingeniería 
 #### Documentación de obligatorio 
 #### Certificado en DevOps 
 #### Estudiantes grupo 8: Vicente Cersosimo – Ramiro Gonzalez 
 #### Tutor: Federico Barceló 2023
+
 
 ## Presentación del problema
 Una empresa del sector retail desea modernizar la forma en que desarrollan y realizan el delivery del software de su plataforma. Para esto, uno de sus “C-Levels” propone impulsar un modelo DevOps con el fin de mejorar el time-to-market y calidad del software desarrollado in-house. 
@@ -37,7 +36,8 @@ Para la solución propuesta se implementaron dos tipos de repositorios. por un l
 
 ### Etapas de CI 
 #### Análisis de código estático 
-Para el analisis estatico del codigo y revision continua se integro la herramienta de SonarCloud, la cual se ejecuta cada vez que se integra codigo a una de las ramas estables (main, dev, test).
+Para el analisis estatico del codigo y revision continua se integro la herramienta de SonarCloud a nuestros repositorios en github. Dicho analisis se ejecuta cada vez que se integra codigo a una de las ramas estables (main, dev, test) de cada una de las aplicaciones.
+
 
 
 
