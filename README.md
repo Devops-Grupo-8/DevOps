@@ -71,17 +71,23 @@ En general, la mayoría de los repositorios han arrojado resultados positivos, c
 
 ##### Enfocandonos en cada uno de los repositorios 
 
+Dentro de cada uno de los repositorios se encontraron los siguientes inconvenientes:
+
 ###### orders-service-example
-Dentro del repositorio se encontraron los siguientes inconvenientes:
 (1) Bug, clasificado como DESTACADO, que apunta a un NullPointerException. Para evitarlo, se podría verificar que la variable en uso no sea nula antes de aplicarla.
 (2) Vulnerabilidades de seguridad, una de ellas clasificada como DESTACADA y otra como MENOR. Para evitar problemas de seguridad, se debería restringir el acceso a la información del lado donde el usuario tiene acceso.
 (8) Code smells, algunos de los indicadores son: código confuso o rebuscado que se podría refactorizar, otro relacionado con el rendimiento y, por último, un caso de prueba (test case) sin ninguna "Assertion".
 Por último, y no menos importante, el 15.6% del código en "orders-service-example" está duplicado, lo cual es algo que se podría refactorizar para reutilizar el código ya generado.
 
 ###### payments-service-example
-Dentro del repositorio se encontraron los siguientes inconvenientes:
 (1) Bug por el guardado y reusado de un objeto Random. El uso de la clase java.util.Random para generar números aleatorios es apropiado. No obstante, es importante tener en cuenta que si este código se ejecuta varias veces en rápida sucesión, es posible obtener el mismo valor de randomOption en diferentes ejecuciones.
 (3) Code Smells generados por código confuso, problemas de rendimiento y también un test sin "Assertion".
+
+###### products-service-example
+(5) Code Smells, entre ellos por: código confuso, rendimiento, diseño y por un test sin "assertion".
+
+###### shipping-service-example
+(7) Code Smells, de los cuales 2 son problemas de rendimiento, 2 por código confuso, 2 por no pasarle tipo a la invocación de un Generic y, por último, un test case sin al menos un "assertion".
 
 Dejamos una imagen mostrando nuestro panel en SonarCloud:
 <p align="center">
