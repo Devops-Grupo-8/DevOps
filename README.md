@@ -34,3 +34,7 @@ Para la solución propuesta se implementaron dos tipos de repositorios. por un l
 - **Repositorio DevOps:** En este repositorio se encuentran los archivos del código que genera la infraestructura, así como los relacionados con el ciclo de Continuous Deployment (CD). Optamos por utilizar la estrategia de desarrollo Trunk Based, donde mantenemos una única rama principal llamada 'main' para el desarrollo de software.
 
 <img style="display:block;text-align:center" src="Extras/Imagen TrunkBased.png" width=100% title="static">
+
+### Etapas de CI 
+#### Análisis de código estático 
+Para el analisis estatico del codigo y revision continua se integro la herramienta de SonarCloud, la cual se ejecuta cada vez que se integra codigo a una de las ramas estables (main, dev, test).
