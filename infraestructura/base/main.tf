@@ -78,3 +78,12 @@ resource "aws_s3_bucket_public_access_block" "public_acces" {
   block_public_acls       = false
   block_public_policy     = false
 }
+
+resource "aws_ecr_repository" "foo" {
+  name                 = "bar"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}
