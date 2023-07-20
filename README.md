@@ -64,13 +64,25 @@ Una vez que se realiza una modificación en el código y se inicia una pipeline,
 <p align="center">
 <img style="display:block;text-align:center" src="Extras/Testeo Sonnar en Github.jpeg" width=75% title="static">
 </p>
-#### Analisis de los resultados obtenidos y recomendaciones a implementar para mejorar la calidad del mismo.
+
+#### Analisis de los resultados obtenidos y recomendaciones a implementar.
 
 En general, la mayoría de los repositorios han arrojado resultados positivos, con un resultado final "passed". Sin embargo, es importante señalar que todos los repositorios han reportado algunos "code smells", que son indicativos de problemas o debilidades en el diseño o implementación del software. Estos code smells son importantes de tener en cuenta, ya que nos proporcionan información valiosa sobre áreas de mejora en el código.
 
-Enfocandonos en cada uno de los repositorios 
+##### Enfocandonos en cada uno de los repositorios 
 
-En los repositorios de los MS orders y payments se detectaron 1 bug en cada uno, categorizados como C y D respectivamente. Si bien no son categoria A, son bugs a los que hay que hacerle foco y corregir de inmediato, ya que pueden hacer romper el funcionamiento del MS. 
+###### orders-service-example
+Dentro del repositorio se encontraron los siguientes inconvenientes:
+(1) bug el cual es clasificado como DESTACADO, que apunta a un NullPointerException. Para evitarlo se podria verificar que la variable en uso no sea null antes de aplicarla.
+(2) vulnerabilidades de seguridad, 1 de ellas clasificada como DESTACADO y otro como MENOR. Para evitar tener problemas de seguridad se tendria que sacar toda la informacion del lado donde el usuario tiene acceso.
+(8) Code smells de los cuales algunos de los indicadores son: Codigo confuso o rebuscado que se podria refactorizar, otro de performance y por ultimo un test case sin ningun "Assertion"
+Por ultimo y es un detalle no menor, el 15.6% del codigo de orders-service-example esta duplicado, es algo que se podria refactorizar
+para reutilizar el codigo ya generado.
+
+###### payments-service-example
+Dentro del repositorio se encontraron los siguientes inconvenientes:
+(1) bug por el guardado y reusado de un Random, el uso de la clase java.util.Random para generar números aleatorios es apropiado. Sin embargo, es importante tener en cuenta que si este código se ejecuta varias veces en rápida sucesión, es posible que obtengas el mismo valor de randomOption en diferentes ejecuciones.
+(3) Code Smells que se generan por codigo confuso, performance y tambien un test sin "Assertion"
 
 Dejamos una imagen mostrando nuestro panel en SonarCloud:
 <p align="center">
