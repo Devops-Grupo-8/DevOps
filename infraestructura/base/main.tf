@@ -1,53 +1,95 @@
-module "eks" {
-  source  = "terraform-aws-modules/eks/aws"
-  version = "~> 18.21"
+resource "aws_eks_cluster" "cluster-dev" {
+  name     = "devops-grupo-8-dev"
+  role_arn = var.role_arn
 
-  cluster_name    = var.cluster_name
-  cluster_version = "1.26"
-
-  cluster_endpoint_public_access = true
-
-  vpc_id                   = var.vpc_id
-  subnet_ids               = var.subnets
-  control_plane_subnet_ids = var.subnets
-
-  create_iam_role = false
-  iam_role_arn    = var.role_arn
-
-  eks_managed_node_group_defaults = {
-    instance_types = ["t3.micro"]
-  }
-
-  eks_managed_node_groups = {
-    workers = {
-      min_size     = 1
-      max_size     = 2
-      desired_size = 1
-
-      instance_types           = ["t3.small"]
-      capacity_type            = "ON_DEMAND"
-      iam_role_arn             = var.role_arn
-      iam_instance_profile_arn = var.role_arn
-      create_iam_role          = false
-      create_role              = false
-    }
+  vpc_config {
+    subnet_ids = var.subnets
   }
 
   tags = {
-    Environment = var.enviroment_name
+    Environment = "dev"
     Terraform   = "true"
   }
 }
 
-module "s3_bucket" {
-  source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "2.9.0"
-  bucket  = var.bucket_name
-  acl = "private"
+resource "aws_eks_cluster" "cluster-test" {
+  name     = "devops-grupo-8-test"
+  role_arn = var.role_arn
+
+  vpc_config {
+    subnet_ids = var.subnets
+  }
+
+  tags = {
+    Environment = "test"
+    Terraform   = "true"
+  }
 }
 
-resource "aws_s3_bucket_policy" "allow_acces" {
-  bucket = module.s3_bucket.s3_bucket_id
+resource "aws_eks_cluster" "cluster-prod" {
+  name     = "devops-grupo-8-prod"
+  role_arn = var.role_arn
+
+  vpc_config {
+    subnet_ids = var.subnets
+  }
+
+  tags = {
+    Environment = "prod"
+    Terraform   = "true"
+  }
+}
+
+//buckets
+resource "aws_s3_bucket" "bucket_dev" {
+  bucket  = "devops-grupo-8-bucket-dev"
+  tags = {
+    Name        = "devops-grupo-8-bucket"
+    Environment = "dev"
+  }
+}
+
+resource "aws_s3_bucket" "bucket_test" {
+  bucket  = "devops-grupo-8-bucket-test"
+  tags = {
+    Name        = "devops-grupo-8-bucket"
+    Environment = "test"
+  }
+}
+
+resource "aws_s3_bucket" "bucket_prod" {
+  bucket  = "devops-grupo-8-bucket-prod"
+  tags = {
+    Name        = "devops-grupo-8-bucket"
+    Environment = "prod"
+  }
+}
+
+//allow-public-acces
+resource "aws_s3_bucket_public_access_block" "public_acces_bucket_dev" {
+  bucket = aws_s3_bucket.bucket_dev.id
+
+  block_public_acls       = false
+  block_public_policy     = false
+}
+
+resource "aws_s3_bucket_public_access_block" "public_acces_bucket_test" {
+  bucket = aws_s3_bucket.bucket_test.id
+
+  block_public_acls       = false
+  block_public_policy     = false
+}
+
+resource "aws_s3_bucket_public_access_block" "public_acces_bucket_prod" {
+  bucket = aws_s3_bucket.bucket_prod.id
+
+  block_public_acls       = false
+  block_public_policy     = false
+}
+
+//allow-acces
+resource "aws_s3_bucket_policy" "allow_acces_bucket_test" {
+  bucket = aws_s3_bucket.bucket_test.id
   policy = <<EOF
   {
     "Version": "2008-10-17",
@@ -58,27 +100,72 @@ resource "aws_s3_bucket_policy" "allow_acces" {
         "Effect": "Allow",
         "Principal": "*",
         "Action": "s3:GetObject",
-        "Resource": "arn:aws:s3:::${var.bucket_name}/*"
+        "Resource": "arn:aws:s3:::testops-grupo-8-bucket-test/*"
       }
     ]
   }
   EOF
 }
 
-resource "aws_s3_bucket_website_configuration" "website" {
-  bucket = module.s3_bucket.s3_bucket_id
+resource "aws_s3_bucket_policy" "allow_acces_bucket_prod" {
+  bucket = aws_s3_bucket.bucket_prod.id
+  policy = <<EOF
+  {
+    "Version": "2008-10-17",
+    "Id": "GetObjectFromS3",
+    "Statement": [
+      {
+        "Sid": "1",
+        "Effect": "Allow",
+        "Principal": "*",
+        "Action": "s3:GetObject",
+        "Resource": "arn:aws:s3:::devops-grupo-8-bucket-prod/*"
+      }
+    ]
+  }
+  EOF
+}
+
+resource "aws_s3_bucket_policy" "allow_acces_bucket_dev" {
+  bucket = aws_s3_bucket.bucket_dev.id
+  policy = <<EOF
+  {
+    "Version": "2008-10-17",
+    "Id": "GetObjectFromS3",
+    "Statement": [
+      {
+        "Sid": "1",
+        "Effect": "Allow",
+        "Principal": "*",
+        "Action": "s3:GetObject",
+        "Resource": "arn:aws:s3:::devops-grupo-8-bucket-dev/*"
+      }
+    ]
+  }
+  EOF
+}
+
+//website-configuration
+resource "aws_s3_bucket_website_configuration" "website_bucket_dev" {
+  bucket = aws_s3_bucket.bucket_dev.id
+  index_document {
+    suffix = "index.html"
+  }
+}
+resource "aws_s3_bucket_website_configuration" "website_bucket_test" {
+  bucket = aws_s3_bucket.bucket_test.id
+  index_document {
+    suffix = "index.html"
+  }
+}
+resource "aws_s3_bucket_website_configuration" "website_bucket_prod" {
+  bucket = aws_s3_bucket.bucket_prod.id
   index_document {
     suffix = "index.html"
   }
 }
 
-resource "aws_s3_bucket_public_access_block" "public_acces" {
-  bucket = module.s3_bucket.s3_bucket_id
-
-  block_public_acls       = false
-  block_public_policy     = false
-}
-
+//Repositorios
 resource "aws_ecr_repository" "orders-service-example" {
   name                 = "orders-service-example"
   image_tag_mutability = "MUTABLE"
