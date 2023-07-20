@@ -1,4 +1,6 @@
+<p align="center">
 <img style="display:block;text-align:center" src="Extras/ORT.png" width=100% title="static">
+</p>
 
 #### Facultad de Ingeniería 
 #### Documentación de obligatorio 
@@ -25,9 +27,9 @@ A continuación se explicaran los cambios implementados en cada una de las área
 En el inicio del proyecto, realizamos un tablero Kanban a modo de establer una hoja de ruta clara en cuanto a las tareas necesarias a realizar para el proyecto y los tiempos que cada una de ellas podria requerir.
 
 Las tareas fueron las siguientes:
-
-<img style="display:block;text-align:center" src="Extras/Tablero Kanban.jpeg" width=100% title="static">
-
+<p align="center">
+<img style="display:block;text-align:center" src="Extras/Tablero Kanban.jpeg" width=60% title="static">
+</p>
 ### Infraestructura 
 En el ámbito de la infraestructura, hemos logrado una modernización significativa al adoptar un enfoque descentralizado basado en microservicios. Esta arquitectura permite una escalabilidad más eficiente tanto vertical como horizontalmente. Además, hemos migrado a una infraestructura en la nube, aprovechando Terraform para implementar una gestión de infraestructura como código (IaC) y haciendo uso de los servicios de AWS.
 
@@ -35,12 +37,13 @@ En el ámbito de la infraestructura, hemos logrado una modernización significat
 Para la solución propuesta se implementaron dos tipos de repositorios. por un lado, se implementó un repositorio para cada uno de los microservicios y por otro se implementó un repositorio que lo llamamos DevOps, con el fin de guardar todo lo vinculado a la infraestructura como código y todo los archivos relacionados al ciclo de deploy continuo.
 - **Repositorios de aplicaciones:** En dichos repositorios se encuentra todo el desarrollo de cada uno de los microservicios y lo relacionado a los archivos de integración continua. Como modelo de flujo de trabajo de ramificación para la gestión del desarrollo y mantenimiento de cada una de las aplicaciones se utilizó GitFlow, con el fin de llevar el control de cada una de las versiones del código. En cada uno de estos repositorios se definieron tres ramas estables como son, master, dev y test.
 
-<img style="display:block;text-align:center" src="Extras/Imagen Gitflow.png" width=100% title="static">
-
+<p align="center">
+<img style="display:block;text-align:center" src="Extras/Imagen Gitflow.png" width=60% title="static">
+</p>
 - **Repositorio DevOps:** En este repositorio se encuentran los archivos del código que genera la infraestructura, así como los relacionados con el ciclo de Continuous Deployment (CD). Optamos por utilizar la estrategia de desarrollo Trunk Based, donde mantenemos una única rama principal llamada 'main' para el desarrollo de software.
-
-<img style="display:block;text-align:center" src="Extras/Imagen TrunkBased.png" width=100% title="static">
-
+<p align="center">
+<img style="display:block;text-align:center" src="Extras/Imagen TrunkBased.png" width=60% title="static">
+</p>
 ### Reglas de protección de las ramas 
 
 Es fundamental resaltar que, desde el inicio del proyecto, establecimos una política sólida en cuanto a la protección de cada una de las ramas de las aplicaciones. Esta medida fue esencial para mantener un seguimiento de todos los cambios realizados en las cuatro aplicaciones por parte de los integrantes del equipo.
@@ -58,9 +61,9 @@ Dicha política consistió en tres aspectos fundamentales:
 Para llevar a cabo el análisis estático del código y la revisión continua, hemos integrado la herramienta SonarCloud en nuestros repositorios en GitHub. Este análisis se ejecuta automáticamente cada vez que se integra código en una de las ramas estables (main, dev, test) de cada una de las aplicaciones
 
 Una vez que se realiza una modificación en el código y se inicia una pipeline, es posible observar el proceso en el que SonarCloud lleva a cabo la verificación del código. A continuación, dejamos una imagen que muestra este proceso en acción:
-
-<img style="display:block;text-align:center" src="Extras/Testeo Sonnar en Github.jpeg" width=100% title="static">
-
+<p align="center">
+<img style="display:block;text-align:center" src="Extras/Testeo Sonnar en Github.jpeg" width=75% title="static">
+</p>
 #### Analisis de los resultados obtenidos y recomendaciones a implementar para mejorar la calidad del mismo.
 
 En general, la mayoría de los repositorios han arrojado resultados positivos, con un resultado final "passed". Sin embargo, es importante señalar que todos los repositorios han reportado algunos "code smells", que son indicativos de problemas o debilidades en el diseño o implementación del software. Estos code smells son importantes de tener en cuenta, ya que nos proporcionan información valiosa sobre áreas de mejora en el código.
@@ -69,8 +72,10 @@ Enfocandonos en cada uno de los repositorios
 
 En los repositorios de los MS orders y payments se detectaron 1 bug en cada uno, categorizados como C y D respectivamente. Si bien no son categoria A, son bugs a los que hay que hacerle foco y corregir de inmediato, ya que pueden hacer romper el funcionamiento del MS. 
 
-<img style="display:block;text-align:center" src="Extras/Testeo Sonnar en Github.jpeg" width=100% title="static">
-
+Dejamos una imagen mostrando nuestro panel en SonarCloud:
+<p align="center">
+<img style="display:block;text-align:center" src="Extras/sonnar cloud imagen dashboard.png" width=60% title="static">
+</p>
 
 ### Testing web app
 En relación al proceso de testeo, optamos por llevar a cabo una evaluación de la aplicación web utilizando la herramienta Postman. En este caso, nuestro test consistió en generar un total de 100 solicitudes (requests) a la URL de nuestra aplicación. Esta acción nos permitió someter la web app a una carga significativa y analizar su rendimiento y estabilidad bajo condiciones de alto tráfico. 
@@ -125,5 +130,6 @@ setTimeout(() => {
 ```
 
 A continuación dejamos la evidencia relacionada a dicho test:
-
-<img style="display:block;text-align:center" src="Extras/Postman Test.jpeg" width=100% title="static">
+<p align="center">
+<img style="display:block;text-align:center" src="Extras/Postman Test.jpeg" width=75% title="static">
+</p>
