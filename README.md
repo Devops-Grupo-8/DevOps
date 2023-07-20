@@ -30,6 +30,7 @@ Las tareas fueron las siguientes:
 <p align="center">
 <img style="display:block;text-align:center" src="Extras/Tablero Kanban.jpeg" width=60% title="static">
 </p>
+
 ### Infraestructura 
 En el ámbito de la infraestructura, hemos logrado una modernización significativa al adoptar un enfoque descentralizado basado en microservicios. Esta arquitectura permite una escalabilidad más eficiente tanto vertical como horizontalmente. Además, hemos migrado a una infraestructura en la nube, aprovechando Terraform para implementar una gestión de infraestructura como código (IaC) y haciendo uso de los servicios de AWS.
 
