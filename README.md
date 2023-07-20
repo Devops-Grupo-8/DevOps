@@ -103,7 +103,7 @@ Dejamos una imagen mostrando nuestro panel en SonarCloud:
 </p>
 
 ### Testing web app
-En relación al proceso de testeo, optamos por llevar a cabo una evaluación de la aplicación web utilizando la herramienta Postman. En este caso, nuestro test consistió en generar un total de 100 solicitudes (requests) a la URL de nuestra aplicación. Esta acción nos permitió someter la web app a una carga significativa y analizar su rendimiento y estabilidad bajo condiciones de alto tráfico. 
+Realizamos un completo proceso de testeo utilizando Postman para nuestra aplicación web. Verificamos el tiempo de respuesta, asegurándonos de que fuera inferior a 300 ms y que el código de la misma fuera 200. También nos aseguramos de incluir el tipo de contenido adecuado en el header de cada solicitud. Adicionalmente, realizamos una prueba de carga enviando 100 solicitudes con intervalos de 100 ms, de las cuales el 91% obtuvo tiempos satisfactorios.
 
 Link aplicación web : [http://devops-grupo-8-bucket-dev.s3-website-us-east-1.amazonaws.com/]
 
